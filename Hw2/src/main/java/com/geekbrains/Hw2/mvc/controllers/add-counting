@@ -1,0 +1,16 @@
+
+package com.geekbrains.Hw2.mvc.controllers;
+
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.*;
+
+import static sun.rmi.transport.proxy.CGIHandler.RequestMethod;
+
+@Controller
+public class AddCounting {
+    @RequestMapping(value = "/add-counting", method = RequestMethod.GET)
+    public String AddCounting() {
+        return "add-counting.jsp";
+    }
+}

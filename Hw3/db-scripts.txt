@@ -1,0 +1,48 @@
+CREATE USER 'geek'@'localhost' IDENTIFIED BY 'geek';
+GRANT ALL PRIVILEGES ON * . * TO 'geek'@'localhost';
+
+Use university;
+Select * from lecturers;
+Select * from courses;
+Select * from students;
+Select * from courses_students;
+
+DROP TABLE IF EXISTS lecturers;
+DROP TABLE IF EXISTS students;
+DROP TABLE IF EXISTS courses;
+
+Create TABLE lecturers (
+	id INT(11) NOT NULL AUTO_INCREMENT,
+    name VARCHAR(100) DEFAULT NULL,
+    PRIMARY KEY(id)
+) ENGINE=InnoDB CHARSET=utf8mb4;
+
+CREATE TABLE students (
+	id INT(11) NOT NULL AUTO_INCREMENT,
+    name VARCHAR(100) DEFAULT NULL,
+    PRIMARY KEY(id)
+) ENGINE=InnoDB CHARSET=utf8mb4;
+
+CREATE TABLE courses (
+	id INT(11) NOT NULL AUTO_INCREMENT,
+    title VARCHAR(100) DEFAULT NULL,
+    lecturer_id int(11) DEFAULT NULL,
+    PRIMARY KEY(id),
+    CONSTRAINT FK_AUTH_ID FOREIGN KEY (lecturer_id)
+    REFERENCES lecturers (id)
+) ENGINE=InnoDB CHARSET=utf8mb4;
+
+CREATE TABLE  courses_students (
+	course_id int(11) NOT NULL,
+    student_id int(11) NOT NULL,
+
+    PRIMARY KEY(course_id, student_id),
+
+	CONSTRAINT FK_COURSE FOREIGN KEY (course_id)
+    REFERENCES courses (id)
+    ON DELETE NO ACTION ON UPDATE NO ACTION,
+
+    CONSTRAINT FK_STUDENTS FOREIGN KEY (student_id)
+    REFERENCES students (id)
+    ON DELETE NO ACTION ON UPDATE NO ACTION
+) ENGINE=InnoDB CHARSET=utf8mb4;
