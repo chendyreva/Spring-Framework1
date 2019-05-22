@@ -1,0 +1,21 @@
+Use lesson6;
+
+Select * from book;
+
+DROP TABLE IF EXISTS book;
+
+Create TABLE book (
+	id INT(11) NOT NULL AUTO_INCREMENT,
+    name VARCHAR(100) DEFAULT NULL,
+    surname VARCHAR(100),
+    salary int,
+    PRIMARY KEY(id)
+) ENGINE=InnoDB CHARSET=utf8mb4;
+
+INSERT INTO `lesson6`.`book` (`id`, `name`, `surname`, 'salary') VALUES ('1', 'Sergey','Sudorov' '42000');
+INSERT INTO `lesson6`.`book` (``id`, `name`, `surname`, 'salary') VALUES ('2', 'Ivan','Ivanov' '40000');
+INSERT INTO `lesson6`.`book` (``id`, `name`, `surname`, 'salary') VALUES ('3', 'Petr','Petrov' '36000');
+
+
+
+
